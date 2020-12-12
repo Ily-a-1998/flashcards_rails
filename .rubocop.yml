@@ -9,7 +9,7 @@ AllCops:
 Layout/Tab: 
   Enabled: false
 
-Layout/EmptyLineAfterMagicComment: 
+Layout/AlignHash:
   Enabled: false
 
 #################### Metrics ###############################
