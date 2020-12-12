@@ -26,6 +26,8 @@ Metrics/BlockLength:
   Exclude:
     - 'config/initializers/simple_form_bootstrap.rb'
 
+Metrics/AbcSize:
+  Enabled: false
 #################### Style ###############################
 
 Style/StringLiterals:
