@@ -9,6 +9,9 @@ AllCops:
 Layout/Tab: 
   Enabled: false
 
+Layout/EmptyLineAfterMagicComment: 
+  Enabled: false
+
 #################### Metrics ###############################
 
 Metrics/LineLength:
