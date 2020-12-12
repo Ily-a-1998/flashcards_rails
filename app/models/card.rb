@@ -17,10 +17,8 @@ class Card < ApplicationRecord
     save!
   end
 
-  private
-
   def set_review_date
-    self.review_date = Time.now + 3.days
+    self.review_date = Date.today + 3.days
   end
 
   def check_text
