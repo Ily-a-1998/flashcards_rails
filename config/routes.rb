@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   root 'flashcards#index'
 
-  resources :cards
+  resources :cards, except: :show
 end
