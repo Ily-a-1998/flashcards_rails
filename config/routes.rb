@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  root 'flashcards#index'
-
   resources :cards, except: :show
+
+  resources :cards do
+    member do
+      post 'check_original_text_card'
+    end
+  end
+
+  root 'flashcards#index'
 end

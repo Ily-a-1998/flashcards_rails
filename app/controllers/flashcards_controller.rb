@@ -1,3 +1,5 @@
 class FlashcardsController < ApplicationController
-  def index; end
+  def index
+    @card = Card.dated.sort_random.last
+  end
 end
