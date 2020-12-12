@@ -1,6 +1,6 @@
 # Flashcards
 
-[![Build Status](https://travis-ci.org/Ily-a-1998/flashcards_rails.svg?branch=task7)](https://travis-ci.org/Ily-a-1998/flashcards_rails)
+[![Build Status](https://travis-ci.org/Ily-a-1998/flashcards_rails.svg?branch=master)](https://travis-ci.org/Ily-a-1998/flashcards_rails)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
