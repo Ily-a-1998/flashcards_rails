@@ -28,6 +28,10 @@ Metrics/BlockLength:
 
 Metrics/AbcSize:
   Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
 #################### Style ###############################
 
 Style/StringLiterals:
@@ -72,6 +76,9 @@ Style/AsciiComments:
   Enabled: false
 
 Style/GuardClause:
+  Enabled: false
+
+Style/BlockComments:
   Enabled: false
 
 Lint/UnusedBlockArgument:
