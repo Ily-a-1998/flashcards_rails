@@ -74,7 +74,7 @@ RSpec.describe CardsController, type: :controller do
       end
 
       it 'changes card attributes' do
-        patch :update, params: { id: card, card: { original_text: 'new title', translated_text: 'new body'} }
+        patch :update, params: { id: card, card: { original_text: 'new title', translated_text: 'new body' } }
         card.reload
 
         expect(card.original_text).to eq card.original_text
