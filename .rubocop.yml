@@ -18,6 +18,9 @@ Layout/ElseAlignment:
 Layout/EndAlignment:
   Enabled: false
 
+Layout/IndentationWidth:
+  Enabled: false
+
 #################### Metrics ###############################
 
 Metrics/LineLength:
