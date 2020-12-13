@@ -1,4 +1,5 @@
 class Card < ApplicationRecord
+  attr_reader :picture_remote_url
   belongs_to :user
 
   validates :original_text, :translated_text, :review_date, presence: true
@@ -6,8 +7,12 @@ class Card < ApplicationRecord
 
   before_validation :set_review_date, only: :create
 
+  has_attached_file :picture, styles: { original: '360x360>' }
+  validates_attachment_content_type :picture,
+                                    content_type: %r{\Aimage\/.*\z}
+
   scope :on_review_date, -> { order(review_date: :desc) }
-  scope :sort_random, -> { order('RANDOM()') }
+  scope :sort_random, -> { order(Arel.sql('RANDOM()')) }
   scope :dated, -> { where('review_date <= ?', Date.today) }
 
   def check_original_text_answer(answer)
@@ -28,5 +33,12 @@ class Card < ApplicationRecord
 
   def check_text
     return errors.add(:translated_text, 'Должна быть разница между оригинальным и переведенным текстом') if original_text.casecmp?(translated_text)
+  end
+
+  def picture_remote_url=(url_value)
+    if url_value.present?
+      self.picture = URI.parse(url_value)
+      @picture_remote_url = url_value
+    end
   end
 end

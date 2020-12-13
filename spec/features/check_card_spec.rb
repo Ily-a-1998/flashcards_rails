@@ -30,4 +30,20 @@ RSpec.describe 'Checking translation' do
       expect(page).to have_text 'Не угадал, правильный ответ:'
     end
   end
+
+  context 'upload picture for card' do
+    before { visit edit_card_url(card) }
+
+    it 'can upload picture' do
+      attach_file 'card_picture', 'spec/files/image.jpg'
+      click_button 'Update Card'
+      expect(card.picture).not_to be_nil
+    end
+
+    it 'can upload in sait' do
+      fill_in 'card_picture_remote_url', with: 'https://www.royal-canin.ru/upload/iblock/a19/photo_9.jpg'
+      click_button 'Update Card'
+      expect(card.picture).not_to be_nil
+    end
+  end
 end
