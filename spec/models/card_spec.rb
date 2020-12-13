@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Card, type: :model do
   let!(:user) { create(:user) }
-  let!(:deck) {create(:deck, user: user)}
+  let!(:deck) { create(:deck, user: user) }
   let(:card) { create(:card, deck: deck, user: user) }
   let(:invalid_card) { build(:card, original_text: 'Home', translated_text: 'home') }
 

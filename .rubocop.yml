@@ -12,6 +12,12 @@ Layout/Tab:
 Layout/AlignHash:
   Enabled: false
 
+Layout/ElseAlignment:
+  Enabled: false
+
+Layout/EndAlignment:
+  Enabled: false
+
 #################### Metrics ###############################
 
 Metrics/LineLength:
@@ -79,6 +85,9 @@ Style/GuardClause:
   Enabled: false
 
 Style/BlockComments:
+  Enabled: false
+
+Style/EmptyElse:
   Enabled: false
 
 Lint/UnusedBlockArgument:
