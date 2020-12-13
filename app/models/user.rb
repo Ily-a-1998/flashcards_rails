@@ -1,6 +1,7 @@
 class User < ApplicationRecord
-  authenticates_with_sorcery!
   has_many :cards
+  has_many :decks, dependent: :destroy
+  belongs_to :current_deck, class_name: 'Deck', optional: true
 
   validates :password, length: { minimum: 5 }, if: lambda {
     new_record? || changes[:crypted_password]

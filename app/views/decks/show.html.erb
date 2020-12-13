@@ -1,0 +1,28 @@
+<div class="container">
+<h1><center>Полный список карточек в колоде:</center></h1>
+  <br>
+  <table class = "table">
+    <thead>
+      <tr>
+        <th>Название колоды</th>
+        <th>Оригинальный текст</th>
+        <th>Переведенный текст</th>
+        <th>Дата</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% if @deck.cards.empty? %>
+      <p>В колоде нет карт</p>
+    <% else %>
+      <% @deck.cards.each do |c| %>
+        <tr>
+          <td><%= c.deck.title%></td>
+          <td><%= c.original_text %></td>
+          <td><%= c.translated_text %></td>
+          <td><%= c.review_date&.strftime("%d/%m/%Y") %></td>
+        </tr>
+      <% end %>
+    <% end %>
+    </tbody>
+  </table>
+</div>
