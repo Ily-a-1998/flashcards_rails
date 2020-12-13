@@ -16,7 +16,7 @@
     <% else %>
       <% @deck.cards.each do |c| %>
         <tr>
-          <td><%= c.deck.title%></td>
+          <td><%= c.deck.title %></td>
           <td><%= c.original_text %></td>
           <td><%= c.translated_text %></td>
           <td><%= c.review_date&.strftime("%d/%m/%Y") %></td>
