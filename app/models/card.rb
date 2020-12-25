@@ -11,7 +11,7 @@ class Card < ApplicationRecord
   has_attached_file :picture, styles: { original: '360x360>' }
   validates_attachment_content_type :picture,
                                     content_type: %r{\Aimage\/.*\z}
-  
+
   scope :on_review_date, -> { order(review_date: :desc) }
   scope :sort_random, -> { order(Arel.sql('RANDOM()')) }
   scope :dated, -> { where('review_date <= ?', Time.now) }

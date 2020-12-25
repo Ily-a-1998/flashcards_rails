@@ -93,5 +93,8 @@ Style/BlockComments:
 Style/EmptyElse:
   Enabled: false
 
+Style/DateTime: 
+  Enabled: false
+
 Lint/UnusedBlockArgument:
   Enabled: false
