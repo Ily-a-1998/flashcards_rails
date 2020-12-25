@@ -16,7 +16,7 @@
         <% if user === current_user %>
           <td><%= link_to 'Детали', user %></td>
           <td><%= link_to 'Изменить', edit_user_path(user) %></td>
-          <td><%= link_to 'Удалить', user, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+          <td><%= link_to 'Удалить', user, method: :delete, data: { confirm: 'Вы уверены?' }, :class => 'btn btn-danger' %></td>
         <% end %>
       </tr>
     <% end %>
