@@ -27,12 +27,9 @@ RSpec.describe Card, type: :model do
 
   describe '#set_review_date' do
     context 'after create card' do
-      it "card's review date will be three days older then today" do
-        expect(card.review_date.to_date - 3).to eql(Time.now.to_date)
-      end
 
       it "extract a review_date" do
-        expect(card.review_date).to eq(Date.today + 3.days)
+        expect(card.review_date).to eql(Time.now.to_date)
       end
     end
   end
@@ -54,6 +51,37 @@ RSpec.describe Card, type: :model do
     context 'given translate in normal letters' do
       it 'return true' do
         expect(card.check_original_text_answer('дом')).to be true
+      end
+    end
+
+    context "update review date" do
+      it 'correct answer' do
+        card.update(try_count: 0, mistake_count: 0, review_date: DateTime.current)
+        expect(card.check_original_text_answer('дом')).to be true
+        card.rise_try_count
+        expect(card.try_count).to eq(1)
+        expect(card.review_date).to be_within(1.minute).of(DateTime.current + 12.hours)
+      end
+    end
+
+    context "check count try and mistake" do
+      it "given count_try" do
+        card.update(try_count: 0, mistake_count: 0)
+        card.rise_try_count
+        expect(card.try_count).to eq(1)
+        expect(card.mistake_count).to eq(0)
+        card.update(try_count: 1, mistake_count: 0)
+        card.rise_try_count
+        expect(card.try_count).to eq(2)
+        expect(card.mistake_count).to eq(0)
+      end
+
+      it "given mistake count" do
+        card.update(try_count: 0, mistake_count: 0)
+        expect(card.check_original_text_answer('Домина')).to be false
+        card.process_mistake
+        expect(card.try_count).to eq(0)
+        expect(card.mistake_count).to eq(1)
       end
     end
   end

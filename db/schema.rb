@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_13_092209) do
+ActiveRecord::Schema.define(version: 2020_12_25_092923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 2020_12_13_092209) do
     t.bigint "picture_file_size"
     t.datetime "picture_updated_at"
     t.integer "deck_id"
+    t.integer "try_count", default: 0, null: false
+    t.integer "mistake_count", default: 0, null: false
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 

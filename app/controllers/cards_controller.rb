@@ -40,11 +40,13 @@ class CardsController < ApplicationController
 
   def check_original_text_card
     if @card.check_original_text_answer(params[:answer])
-      @card.reset_review_date!
+      @card.rise_try_count
       redirect_to root_path, notice: 'Верно'
     else
+      @card.process_mistake
       redirect_to root_path, alert: "Не угадал, правильный ответ: #{@card.original_text}"
     end
+    @card.save
   end
 
   private
@@ -54,6 +56,6 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :picture, :deck_id)
+    params.require(:card).permit(:original_text, :translated_text, :picture, :deck_id, :review_date)
   end
 end
