@@ -39,14 +39,20 @@ class CardsController < ApplicationController
   end
 
   def check_original_text_card
-    if @card.check_original_text_answer(params[:answer])
+    check_result = @card.just_text(params[:answer])
+    if check_result < 1
       @card.rise_try_count
-      redirect_to root_path, notice: 'Верно'
+      flash[:success] = "Верно"
+    elsif check_result == 1
+      @card.rise_try_count
+      flash[:danger] = "Вы ввели ответ #{params[:answer]} но правильный ответ: #{@card.original_text}"
     else
       @card.process_mistake
-      redirect_to root_path, alert: "Не угадал, правильный ответ: #{@card.original_text}"
+      flash[:error] = "Не угадал, правильный ответ: #{@card.original_text}"
     end
     @card.save
+
+    redirect_to root_path
   end
 
   private

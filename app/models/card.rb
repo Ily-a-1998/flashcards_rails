@@ -16,8 +16,8 @@ class Card < ApplicationRecord
   scope :sort_random, -> { order(Arel.sql('RANDOM()')) }
   scope :dated, -> { where('review_date <= ?', Time.now) }
 
-  def check_original_text_answer(answer)
-    original_text.casecmp?(answer)
+  def just_text(translated_text)
+    DamerauLevenshtein.distance(original_text.downcase, translated_text.downcase)
   end
 
   def set_review_date

@@ -7,6 +7,8 @@ ruby '2.6.3'
 gem 'nokogiri'
 # Authentication
 gem 'sorcery'
+# Check text
+gem 'damerau-levenshtein'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Load image
